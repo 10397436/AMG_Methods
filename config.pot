@@ -1,0 +1,99 @@
+####################################################################
+######            CONFIGURATION FILES: CONFIG:POT             ######
+####################################################################
+
+
+
+
+####################################################################
+######                      DIRECTORIES                       ######
+####################################################################
+
+inputdirectory=share/examples/
+# The directory where input files will be loade,
+# relative to the path where the executable is run from.
+
+outputdirectory=share/results/
+# The directory where output files will be saved,
+# relative to the path where the executable is run from.
+
+####################################################################
+######                     NAME OF FILES                      ######
+####################################################################
+
+inputA=A_DG_level_2_fem_P1_TS.txt
+# The name of the file of matrix, in the format .txt. 
+# It has to be written as
+# #rows   #cols    #nonZeros
+# 1st_row #1st_col #1st_elem
+# ...
+
+inputf=f_DG_level_2_fem_P1_TS.txt
+# The name of the file of vector, in the format .txt. 
+# It has to be written as
+# #indices   1
+# 1st_index  #1st_elem
+# ...
+
+outputTest=Test1.txt
+# The name of the output file, in the format .txt. 
+# If you want to save the file set the flag "print" below
+
+#####################################################################
+######                   SETUP PARAMETERS                      ######
+#####################################################################
+
+theta=0.25
+# theta is the strong connection threashold: 0<theta<=1
+
+nlevel=4
+# nlevel is the number of desidered coarser matrices: nlevel>=2
+
+#####################################################################
+######                   CYCLE PARAMETERS                      ######
+#####################################################################
+
+nu1=1
+# nu1 is the number of pre-smoothing iterations in AMG-method: nu>=1
+
+nu2=1
+# nu2 is the number of post-smoothing iterations in AMG-method: nu2>=1
+
+mu=1
+# mu is a flag to decide cycle in AMG-method
+# mu=1: V-cycle, mu=2 W-cycle
+
+#####################################################################
+######                   METHOD PARAMETERS                     ######
+#####################################################################
+
+fem=DG
+# fem is the type of discretization with which matrix is built
+# this information is in the name of input files
+# fem=CG, conforming Galerkin
+# fem=DG, discontinous Galerkin
+
+method=AMG
+# method indicates the type of method to be applied
+# method=AMG, AMG as stand-alone solver
+# method=PCG, AMG as preconditioner for conjugate gradient
+
+nmaxiter=150
+# nmaxiter is the number of maximum iteration in choosen method
+
+tol=1e-8
+# tol is the tolerance in choosen method
+
+#####################################################################
+######                      OUTPUT FLAGS                       ######
+#####################################################################
+
+print=screen
+# print indicates decision of showing results on screen or file
+# print=screen, print on screen
+# print=file, print on outputTest.txt
+
+savesol=N
+# savesol indicates decision of saving solution of Au=f on file
+# output file has name sol_outputTest.txt
+# savesol=Y/N, Y=yes, N=no

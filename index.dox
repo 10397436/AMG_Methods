@@ -1,0 +1,130 @@
+/**
+ * @mainpage Introduction
+ * 
+ * @section description Description
+ * 
+ * This program aim to solve linear systems arising from conforming and discontinuous finite element discretizions with algebraic multigrid
+ * methods. @n
+ * All source and header files are written in C++11 language. @n
+ * 
+ * @section dependencies Dependencies
+ * 
+ * Software needs that on system must be installed the following dependencies :
+ * 
+ * @arg <a href="http://www.cmake.org">CMake</a> (version 3.5.1 or above), cross-platform family of tools designed to build, 
+ * test and package software;
+ * @arg <a href="http://www.gnu.org/software/make">Make</a> (version 4.1 or above), a tool which controls the generation of executables 
+ * of a program from the program's source files;
+ * @arg @anchor GCC <a href="http://www.gnu.org/software/gcc">GCC</a> (version 5.4.0 or above), GNU Compiler Collection;
+ * @arg @anchor Eigen <a href="http://eigen.tuxfamily.org">Eigen</a> (version 3.3 or above),  library for linear algebra: matrices, 
+ * vectors, numerical solvers,
+ * and related algorithms;
+ * 
+ * We also use the following library, provided in folder @a include/:
+ * 
+ * @arg <a href="http://getpot.sourceforge.net">GetPot</a> (v. 1.1.17), it is used for parsing comand line arguments 
+ * and configuration files.
+ * 
+ * @section compile Compile
+ * 
+ * To generate the executable it is provided file @a CMakeLists.txt (in top-level folder).
+ * 
+ * Create a compilation folder and open it with the following commands :
+ * 
+ * @code
+ *     $ mkdir build
+ *     $ cd build
+ * @endcode
+ * 
+ * Now the system is ready for the configuration : 
+ * 
+ * @code
+ *     $ cmake ..
+ * @endcode
+ * 
+ * If the Eigen library folder is not installed in a system one then cmake will give an error message, therefore it is necessary to specify 
+ * the folder where the library is installed with the following command :
+ *
+ * @code
+ *    $ cmake .. -DEIGEN3_INCLUDE_DIR=path_folder/name_folder
+ * @endcode
+ *
+ * Finally :
+ * 
+ * @code
+ *     $ make
+ * @endcode
+ * 
+ * will create the executable @a main.
+ * 
+ * 
+ * @section configure Parameter configuration
+ * 
+ * @note By default, configuration file is saved in the same folder of CMakeLists.txt.
+ * 
+ * Before running the program configuration file must be set (default: @a config.pot).
+ * In configuration file it can be possible modify some problem parameters, in @a config.pot file all details of parameters are explained. @n
+ * For example it can be possible decide type of mu-cycle, how to use AMG (stand-alone or preconditioner), and more others.
+ * 
+ * 
+ * @section run Run
+ * 
+ * In order to use predefined configuration file (@a config.pot), move into the executable folder (folder @a build/) and digit :
+ * 
+ * @code
+ *     $ ./main 
+ * @endcode
+ * 
+ * 
+ * To specify a different configuration file run main program in the following ways:
+ * 
+ * @code
+ *     $ ./main -f configuration_directory_filename
+ * @endcode
+ * 
+ * or:
+ * 
+ * @code
+ *     $ ./main --file configuration_directory_filename
+ * @endcode
+ * 
+ * 
+ * At the end of the program the results can be print on screen or they can be saved on files in the choosen output directory,
+ * specified in configuration file.
+ * 
+ *
+ * @section examples Examples
+ * In folder @a share/examples/ are given test files (matrices and associated right-hand side vectors have the same name of files
+ * except for "flag" A or f), this folder will be then copied in compilation folder @a build/ with instruction in @a CMakeLists.txt, 
+ * i.e. the examples will be copied in folder @a build/share/examples and therefore the results will be saved 
+ * (if not declared differently by the user) in folder @a build/share/results.
+ *
+ * The name of test files give to the user some important information, therefore we detail the name of files.
+ * 
+ * The following text denotes the name of a matrix (initial "flag" A),
+ * 
+ *  A_FEM_level_h_fem_Pp_TS.txt
+ *
+ *  whereas the following text denotes the name of the associated right-hand side vector with matrix A (initial "flag" f),
+ *
+ *  f_FEM_level_h_fem_Pp_TS.txt
+ *
+ * The FEM "flag" denotes the type of finite element discretizations (CG: conforming Galerkin, DG: discontinouous Galerkin), the value h is 
+ * a "flag" for the grid parameter (bigger h stands for finer refinement of the meshes) and the value p is the 
+ * degree of approximate polynomials. Finally the flag TS denotes that the mesh is a structured simplicial triangular one.
+ * 
+ * 
+ * @section documentation Documentation
+ * If <a href="http://www.doxygen.org">Doxygen</a> and <a href="http://www.graphviz.org">GraphViz</a>
+ * are installed on system, the following instruction (runned in the top-level folder) will create the documentation in folder @a doc/ 
+ * 
+ * @code
+ *     $ doxygen Doxyfile.in
+ * @endcode
+ *
+ * then move into the folder @a doc/latex/ to create the pdf file with the following instructions
+ * @code
+ * $ cd doc/latex/
+ * $ make
+ * @endcode
+ */
